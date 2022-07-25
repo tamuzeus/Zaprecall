@@ -1,11 +1,12 @@
 import React from "react"
 import "./Article.css"
-import {questionarrays} from "../Deck/shuffleArray"
+import { questionarrays } from "../Deck/shuffleArray"
 import shuffleArray from "../Deck/shuffleArray"
+import Footer from "../Footer/Footer"
 
 function Questions(props) {
 
-    const {number, question, asnwer, open, flip, icon, risck, color, button } = props;
+    const { number, question, asnwer, open, flip, icon, risck, color, button, icons, setIcons } = props;
 
     const [isopen, setOpen] = React.useState(open)
     const [isflip, setFlip] = React.useState(flip)
@@ -14,27 +15,31 @@ function Questions(props) {
     const [iscolor, setColor] = React.useState(color)
     const [isbutton, setButton] = React.useState(button)
 
+
     function Deflip() {
         setOpen(false)
         setFlip(false)
     }
 
-    function DontR() {
+    function DontR() { //vermelho
         setIcon("close-circle")
         setRisck("questionnumber risck nope")
         setColor("playimg nope")
+        setIcons([...icons, "close-circle"])
     }
 
-    function Almost() {
+    function Almost() {  //amarelo
         setIcon("help-circle")
         setRisck("questionnumber risck doubt")
         setColor("playimg doubt")
+        setIcons([...icons, "help-circle"])
     }
 
-    function Zap() {
+    function Zap() { //verde
         setIcon("checkmark-circle")
         setRisck("questionnumber risck check")
         setColor("playimg check")
+        setIcons([...icons, "checkmark-circle"])
     }
 
 
@@ -42,7 +47,7 @@ function Questions(props) {
         <div className={isopen ? ("questionarea open") : ("questionarea close")}>
             <div className="questionbegin">
                 <p className={isrisck}>Pergunta {number}</p>
-                <button className="questionplay" disabled={isbutton} onClick={() => { setButton(true); setOpen(true) }}> <ion-icon name={isicon} class={iscolor}></ion-icon> </button>
+                <button className="questionplay" disabled={isbutton} onClick={() => {setButton(true); setOpen(true) }}> <ion-icon name={isicon} class={iscolor}></ion-icon> </button>
             </div>
 
             <div className="card">
@@ -69,21 +74,31 @@ function Questions(props) {
 
 export default function Article() {
 
+    const [icons, setIcons] = React.useState([]) 
 
     return (
-        <article className="article">
-            {shuffleArray(questionarrays).map((value, index) => <Questions
-                key={index}
-                number={index + 1}
-                question={value.question}
-                asnwer={value.asnwer}
-                value={value.open}
-                flip={value.flip}
-                icon={value.icon}
-                risck={value.risck}
-                color={value.color}
-                button={value.button}
-            />)}
-        </article>
+        
+        <>
+            <article className="article">
+                {shuffleArray(questionarrays).map((value, index) => <Questions
+                    key={index}
+                    number={index + 1}
+                    question={value.question}
+                    asnwer={value.asnwer}
+                    value={value.open}
+                    flip={value.flip}
+                    icon={value.icon}
+                    risck={value.risck}
+                    color={value.color}
+                    button={value.button}
+
+
+                    icons={icons}
+                    setIcons={setIcons}
+                />)}
+            </article>
+            <div className="clear"></div>
+            <Footer icons={icons}/>
+        </>
     )
 }

@@ -6,7 +6,7 @@ import "./reset.css"
 import "./index.css"
 
 function App(){
-
+    
     return(
         <>
             {/* <Frontal /> */}

@@ -1,17 +1,25 @@
+import React from "react"
 import "./Footer.css"
+import { questionarrays } from "../Deck/shuffleArray"
+import shuffleArray from "../Deck/shuffleArray"
 
+function EndMenssage({ icons }) {
 
-function EndMenssage(props) {
+    let principal, text
 
-    const { principal, text } = props
+    if (icons.length === 4) {
+        if (icons.includes("close-circle")) {
+            principal = "😥 Putz..."
+            text = "Ainda faltam alguns... mas não desanime!"
+        } else if (icons.includes("help-circle")) {
+            principal = "🥳 Parabéns!"
+            text = "Você não esqueceu de nenhum flashcard!"
+        }
+    }
 
-//lógica: se o button for true, add um contador e add a esfera do button no inferior
-
-//se pelo menos um close-circle existir, mensagem de tristeza
-
-//se pelo menos um help-circle existir, mensagem de parabens
-
-//se todos forem checkmark-circle, mensagem de zap!
+    //se pelo menos um close-circle existir, mensagem de tristeza
+    //se pelo menos um help-circle existir, mensagem de parabens
+    //se todos forem checkmark-circle, mensagem de zap!
 
     return (
         <div className="endmenssage">
@@ -21,36 +29,22 @@ function EndMenssage(props) {
     )
 }
 
-function Concludes(props) {
+export default function Footer({ icons }) {
 
-    const { quant, quantrs } = props
+    function FooterPoints({ value }) {
 
-    return (
-        <p className="concludes">{quant}/{quantrs} CONCLUÍDOS</p>
-    )
-}
-
-function FooterPoints(props) {
-
-    const { points, condition } = props
-
-    // checkmark-circle
-    // close-circle
-    // help-circle
-
-    //playimg check
-    //playimg nope
-    //playimg doubt
-
-    return (
-        <p className="footerpoints"> <ion-icon name={points} class={condition}></ion-icon> </p>
-    )
-}
-
-
-export default function Footer() {
-
-
+        let condition;
+        if (value === "checkmark-circle") {
+            condition = "playimg check"
+        } else if (value === "help-circle") {
+            condition = "playimg doubt"
+        } else if (value === "close-circle") {
+            condition = "playimg nope"
+        }
+        return (
+            <p className="footerpoints"> <ion-icon name={value} class={condition}></ion-icon> </p>
+        )
+    }
 
 
     return (
@@ -59,20 +53,18 @@ export default function Footer() {
                 <div className="endmenssage">
 
                     < EndMenssage
-                        principal="ok"
-                        text="ok" />
+                        icons={icons}
+                    />
 
                 </div>
 
-                <Concludes
-                    quant="2"
-                    quantrs="4" />
+                <p className="concludes">{icons.length}/{shuffleArray(questionarrays).length} CONCLUÍDOS</p>
 
                 <div className="footerbuttons">
 
-                    <FooterPoints
-                        points="checkmark-circle"
-                        condition="playimg check" />
+                    {icons.map((value, index) => <FooterPoints
+                        value={value}
+                        key={index} />)}
 
                 </div>
             </div>
