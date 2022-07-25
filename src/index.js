@@ -9,7 +9,7 @@ function App(){
     
     return(
         <>
-            {/* <Frontal /> */}
+            <Frontal />
             <Game />
         </>
     )
