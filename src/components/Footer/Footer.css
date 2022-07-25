@@ -1,0 +1,61 @@
+ @media only screen and (max-width: 500px) {
+
+     /*Footer*/
+
+     .footer {
+         background: #FFFFFF;
+         box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+         width: 100%;
+         position: fixed;
+         left: 0;
+         bottom: 0;
+     }
+
+     .concludezone {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+         margin-top: 15px;
+     }
+
+     .endmenssage {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         margin-bottom: 10px;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+     }
+
+     .principalendmsg {
+         margin-bottom: 10px;
+         font-style: normal;
+         font-weight: 700;
+         font-size: 18px;
+     }
+
+     .endtext {
+         margin-bottom: 10px;
+     }
+
+     .concludes {
+         margin-bottom: 5px;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+     }
+
+     .footerbuttons {
+         display: flex;
+         justify-content: center;
+         width: 100%;
+     }
+
+     .footerpoints {
+         width: 20px;
+         height: 23px;
+         visibility: initial;
+     }
+ }

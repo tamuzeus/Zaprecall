@@ -1,4 +1,5 @@
 import React from "react"
+import "./Frontal.css"
 
 export default function Frontal() {
     const [setFrontalpage, setRemoveFrontalpage] = React.useState("frontalpage backfrontalpage")

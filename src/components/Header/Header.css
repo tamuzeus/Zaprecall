@@ -1,0 +1,32 @@
+@media only screen and (max-width: 500px) {
+
+    /*--------- Game PAGE --------------*/
+
+    /*Header*/
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        margin-top: 150px;
+    }
+
+    .gamelogo {
+        height: 50px;
+        width: 42px;
+    }
+
+    .minilogo {
+        width: 100%;
+        height: 100%;
+    }
+
+    .tittlelogo {
+        width: 203.17px;
+        height: 44px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 45px;
+        text-align: center;
+    }
+}
